@@ -1,0 +1,13 @@
+@mixin header($elem) {
+	font-size: m($elem, font-size);
+	font-weight: m($elem, font-weight);
+	line-height: rem-calc(m($elem, line) * m($elem, lines));
+
+	@if $elem == $h1 or $elem == $h2 {
+		margin-top: rem-calc(2 * m($elem, line));
+	} @else {
+		margin-top: rem-calc(1 * m($elem, line));
+	}
+
+	margin-bottom: rem-calc(1 * m($elem, lines));
+}

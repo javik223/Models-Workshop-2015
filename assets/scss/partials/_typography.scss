@@ -1,0 +1,49 @@
+@import "mixins";
+
+// Header elements
+$h1: (
+	font-size: rem-calc(76),
+	font-weight: 200,
+	line: 25,
+	lines: 4
+);
+$h2: (
+	font-size: rem-calc(47),
+	font-weight: 200,
+	line: 25,
+	lines: 2
+	);
+$h3: (
+	font-size: rem-calc(29),
+	font-weight: 200,
+	line: 25,
+	lines: 2
+);
+
+$h4: (
+	font-size: rem-calc(18),
+	font-weight: 200,
+	line: 16,
+	lines: 1.6
+);
+
+$h5: (
+	font-size: rem-calc(16),
+	font-weight: 200,
+	line: 16,
+	lines: 1
+);
+
+.spaced-heading {
+	letter-spacing: 3px;
+}
+
+// Links
+
+a {
+	text-decoration: none;
+}
+
+strong {
+	font-weight: bold;
+}

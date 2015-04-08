@@ -62,7 +62,7 @@
 	}
 }
 
-//Add extra padding for mobile and tablet
+//Extra padding for mobile and tablet
 .m-pad {
 	@media #{$small-only} {
 		padding-left: rem-calc(30);
@@ -76,4 +76,48 @@
 		padding-left: rem-calc(20);
 		padding-right: rem-calc(20);
 	}
+
+	@media #{$small-only} {
+		padding-left: rem-calc(20);
+		padding-right: rem-calc(20) !important;
+	}
+}
+// Bottom padding: normal
+.pbn {
+	padding-bottom: $padding;
+}
+// Bottom padding: big
+.pbb {
+	padding-bottom: $padding * 2;
+}
+
+// Align 
+.float-left {
+	float: left;
+}
+.float-right {
+	float: right;
+}
+
+// Visibility state of different devices
+
+.m-hide {
+	@media #{$small-only} {
+		display: none;
+	}
+}
+.t-hide {
+	@media #{$medium-only} {
+		display: none;
+	}
+}
+.l-hide {
+	@media #{$large-up} {
+		display: none;
+	}
+}
+.mt-hide {
+	display: none;
+
+	@extend .l-hide;
 }

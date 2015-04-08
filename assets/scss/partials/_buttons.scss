@@ -21,4 +21,33 @@ button, .button {
 			background-color: lighten(color($primary, light), 20%);
 		}
 	}
+
+	&-large {
+		font-size: rem-calc(50);
+		line-height: 1;
+		font-weight: 900;
+		@include transition ( box-shadow 2.0s ease-out, transform 0.5s ease-in-out, color 1s ease-in-out, background-color 0.3s ease-in-out );
+		@include transform( translateZ(0) );
+		position: relative;
+
+		&:hover {
+			background-color: color($white);
+			color: color($primary) !important;
+			box-shadow: long-shadow(
+							$direction: -45deg,
+							$length: rem-calc(1000),
+							$color: indigo,
+							$fade: false,
+							$shadow-count: 500
+						);
+		}
+	}
+
+	&-medium {
+		font-size: rem-calc(25);
+		line-height: 1;
+		font-weight: 900;
+		position: relative;
+		text-transform: uppercase;
+	}
 }

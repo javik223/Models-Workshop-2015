@@ -1,0 +1,31 @@
+.header {
+	padding: $padding;
+	//background-color: color($primary);
+	position: absolute;
+	width: 100%;
+	z-index: 200;
+	
+	@medai #{$medium-up} {
+		text-align: center;
+	}
+
+	.nav-icon {
+		top: 0;
+		right: $padding * 4;
+		@include transform( scale(0.8) );
+
+		span {
+			background-color: color($primary);
+		}
+	}
+
+	.logo {
+		img {
+			height: rem-calc(80);
+
+			@media #{$medium-up} {
+				height: auto;
+			}
+		}
+	}
+}

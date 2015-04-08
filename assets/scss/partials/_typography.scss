@@ -1,6 +1,18 @@
 @import "mixins";
-
+$base-font-size: rem-calc(14);
+$base-line-height: rem-calc(20);
+$base-font-family: "brandon-grotesque", 'Lato', Helvetica, sans;
 // Header elements
+
+body, p {
+	font-size: $base-font-size;
+	line-height: $base-line-height;
+	font-family: $base-font-family;
+}
+p {
+	margin-bottom: $base-line-height;
+}
+
 $h1: (
 	font-size: rem-calc(76),
 	font-weight: 200,
@@ -38,7 +50,7 @@ $h5: (
 	letter-spacing: 3px;
 }
 
-// Links
+// Basic text property for basic HTML elements
 
 a {
 	text-decoration: none;
@@ -46,4 +58,44 @@ a {
 
 strong {
 	font-weight: bold;
+}
+.text-center {
+	text-align: center;
+}
+.text-left {
+	text-align: left;
+}
+.text-right {
+	text-align: right;
+}
+.text-light {
+	font-weight: 100;
+}
+.text-uppercase {
+	text-transform: uppercase;
+}
+.text-thick {
+	font-weight: 900 !important;
+	//letter-spacing: -2px;
+}
+h1, .alpha {
+	@include header($h1);
+}
+h2, .beta {
+	@include header($h2);
+}
+h3, .gamma {
+	@include header($h3);
+}
+h4, .omega {
+	@include header($h4);
+}
+h5, .epsilon {
+	@include header($h5);
+}
+
+// Margin and paddings
+// No-margin top
+.nmt {
+	margin-top: 0;
 }

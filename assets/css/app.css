@@ -1003,7 +1003,7 @@ html {
   position: relative;
 }
 
-.nav-icon {
+.nav-icon, .close-icon {
   width: 35px;
   height: 30px;
   position: relative;
@@ -1022,14 +1022,14 @@ html {
   margin-top: 1.25rem;
 }
 @media only screen and (min-width: 40.063em) {
-  .nav-icon {
+  .nav-icon, .close-icon {
     margin: 50px auto;
   }
 }
-.nav-icon.open span {
+.nav-icon.open span, .close-icon.open span {
   background-color: #9e7f64;
 }
-.nav-icon span {
+.nav-icon span, .close-icon span {
   display: block;
   position: absolute;
   height: 3px;
@@ -1045,6 +1045,7 @@ html {
   -moz-transition: 0.25s ease-in-out;
   transition: 0.25s ease-in-out;
 }
+
 .nav-icon span:nth-child(even) {
   left: 50%;
   border-radius: 0 9px 9px 0;
@@ -1097,6 +1098,45 @@ html {
   top: 20px;
 }
 .nav-icon.open span:nth-child(6) {
+  left: calc(50% - 2px);
+  top: 20px;
+}
+
+.close-icon span:nth-child(1), .close-icon span:nth-child(6) {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.close-icon span:nth-child(2), .close-icon span:nth-child(5) {
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+.close-icon span:nth-child(1) {
+  left: 2px;
+  top: 5px;
+}
+.close-icon span:nth-child(2) {
+  left: calc(50% - 2px);
+  top: 5px;
+}
+.close-icon span:nth-child(3) {
+  left: -50%;
+  opacity: 0;
+}
+.close-icon span:nth-child(4) {
+  left: 100%;
+  opacity: 0;
+}
+.close-icon span:nth-child(5) {
+  left: 2px;
+  top: 20px;
+}
+.close-icon span:nth-child(6) {
   left: calc(50% - 2px);
   top: 20px;
 }
@@ -1389,12 +1429,13 @@ html {
 
 .previous-edition-overlay {
   width: 100%;
-  min-height: 100%;
+  height: 100%;
   background-color: #000;
   position: absolute;
   top: 0;
   left: 0;
   z-index: 2000;
+  display: none;
 }
 .previous-edition-overlay_title {
   position: absolute;
@@ -1418,4 +1459,5 @@ html {
 
 .royalSlider {
   width: 100%;
+  height: 100%;
 }

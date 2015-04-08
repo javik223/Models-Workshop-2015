@@ -103,48 +103,90 @@ $(function(){
     });
 
 
-    $("[data-customScroll='").mCustomScrollbar({
+    /*$("[data-customScroll='").mCustomScrollbar({
         scrollInertia: 300,
         autoHideScrollbar: true,
         contentTouchScroll: 25
+    });*/
+
+    var $viewPhotosBtn = $('.viewPhotosBtn');
+
+    $viewPhotosBtn.on('click', function(e) {
+        var editionPhoto =  editionPhoto || new EditionPhotos();
+        editionPhoto.reveal();
+        e.preventDefault();
     });
 
-    /*var controller = new ScrollMagic.Controller();
-
-    var scene = new ScrollMagic.Scene({
-        duration: 10000,
-        offset: 200
-    })
-    .setTween(".hp-section", {backgroundColor: "blue", scale: 0.7})
-    .addTo(controller);*/
-
-    if ($(".gallery").length > 0) {
-        $(".gallery").royalSlider({
-            fullscreen: {
-                  enabled: true,
-                  nativeFS: true
-                },
-            keyboardNavEnabled: true,
-            autoScaleSlider: true, 
-            autoScaleSliderWidth: 1300,     
-            autoScaleSliderHeight: 600,
-            imageScaleMode: 'fit',
-            numImagesToPreload:6,
-            imageAlignCenter: true,
-            imageScalePadding: 0,
-            controlNavigation: 'thumbnails',
-            fadeinLoadedSlide: true,
-            autoHeight: false,
-            globalCaption: true,
-
-            thumbs: {
-                spacing: 5,
-                //arrowsAutoHide: true
-                fitInViewport: false,
-                paddingBottom: 4,
-                appendSpan: true,
-                firstMargin: true,
-            }
-        });
+    function EditionPhotos(el) {
+        this.el = el || $(".previous-edition-overlay");
+        this.playHead = new TimelineMax({paused: true, onComplete: this.attachSlider});
+        this.init();
+        this.closeBtn = $('.close-icon');
+        //console.log(this.closeBtn);
     }
+
+    EditionPhotos.prototype = {
+        init: function(){
+            var self = this;
+
+            var $overlayHeading = this.el.find("h3"),
+                $galleryContainer = this.el.find('.gallery');
+
+            TweenMax.set($galleryContainer, {autoAlpha: 0});
+            this.playHead.set(this.el, {display: "block", minHeight: 0, autoAlpha: 0})
+                        .set($overlayHeading, {autoAlpha: 0, display: "none"})
+                        .to(this.el, 1, {minHeight: "100%", autoAlpha: 1, force3D: true, ease: Expo.easeOut})
+                        .staggerTo($overlayHeading, 1, {autoAlpha: 1, display: "block"}, 0.3)
+                        .to(".rsOverflow", 1, {height: "100%"});
+
+            $(window).keydown(function(e){
+                if (e.which == 27) {
+                    self.hide();
+                }
+            });
+
+           $closeIcon = self.el.find('.close-icon');
+           $closeIcon.on('click', function(){
+                self.hide();
+           });
+        },
+        reveal: function() {
+            this.playHead.play();
+        }, 
+        hide: function() {
+            this.playHead.reverse();
+        },
+        attachSlider: function(){
+            if ($(".gallery").length > 0) {
+                $(".gallery").royalSlider({
+                    fullscreen: {
+                          enabled: true,
+                          nativeFS: true
+                        },
+                    keyboardNavEnabled: true,
+                    autoScaleSlider: true, 
+                    autoScaleSliderWidth: 1800,     
+                    autoScaleSliderHeight: 1000,
+                    imageScaleMode: 'fit',
+                    numImagesToPreload:6,
+                    imageAlignCenter: true,
+                    imageScalePadding: 0,
+                    controlNavigation: 'thumbnails',
+                    fadeinLoadedSlide: true,
+                    autoHeight: false,
+                    globalCaption: true,
+
+                    thumbs: {
+                        spacing: 5,
+                        //arrowsAutoHide: true
+                        fitInViewport: false,
+                        paddingBottom: 4,
+                        appendSpan: true,
+                        firstMargin: true,
+                    }
+                });
+            }
+            TweenMax.to(".gallery", 1, {autoAlpha :1, ease: Expo.easeInOutExpo});
+        }
+    };
 });

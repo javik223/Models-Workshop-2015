@@ -95,7 +95,7 @@ html {
 	}
 }
 // Navigation icon 
-.nav-icon{
+.nav-icon, .close-icon{
   width: 35px;
   height: 30px;
   position: relative;
@@ -112,12 +112,10 @@ html {
   }
 
   &.open {
-	span {
-		background-color: color($primary);
+		span {
+			background-color: color($primary);
+		}
 	}
-}
-
-
   span {
 	  display: block;
 	  position: absolute;
@@ -128,7 +126,9 @@ html {
 	  @include transform( rotate(0deg) );
 	  @include transition ( 0.25s ease-in-out );
 	}
+}
 
+.nav-icon {
 	span:nth-child(even) {
 	  left: 50%;
 	  border-radius: 0 9px 9px 0;
@@ -185,6 +185,45 @@ html {
 	}
 
 	&.open span:nth-child(6) {
+	  left: calc(50% - 2px);
+	  top: 20px;
+	}
+}
+.close-icon {
+	span:nth-child(1), span:nth-child(6) {
+		@include transform( rotate(45deg) );
+	}
+
+	span:nth-child(2), span:nth-child(5) {
+	  @include transform( rotate(-45deg) );
+	}
+
+	span:nth-child(1) {
+	  left: 2px;
+	  top: 5px;
+	}
+
+	span:nth-child(2) {
+	  left: calc(50% - 2px);
+	  top: 5px;
+	}
+
+	span:nth-child(3) {
+	  left: -50%;
+	  opacity: 0;
+	}
+
+	span:nth-child(4) {
+	  left: 100%;
+	  opacity: 0;
+	}
+
+	span:nth-child(5) {
+	  left: 2px;
+	  top: 20px;
+	}
+
+	span:nth-child(6) {
 	  left: calc(50% - 2px);
 	  top: 20px;
 	}
@@ -492,12 +531,13 @@ html {
 }
 .previous-edition-overlay {
 	width: 100%;
-	min-height: 100%;
+	height: 100%;
 	background-color: #000;
 	position: absolute;
 	top: 0;
 	left: 0;
 	z-index: 2000;
+	display: none;
 	//padding-top: $padding * 4 ;
 
 	&_title {
@@ -526,4 +566,5 @@ html {
 }
 .royalSlider {
 	width: 100%;
+	height: 100%;
 }
